@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: em.lozev/client-service:${GITHUB_SHA:0:7}
+          tags: emlozev/client-service:${GITHUB_SHA:0:7}
