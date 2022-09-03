@@ -1,9 +1,16 @@
 const Sequelize = require('sequelize');
-require('dotenv').config();
+const { database: {
+  host,
+  dialect,
+  name,
+  user,
+  password,
+  tz
+} } = require('config');
 
-const connection = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, process.env.PASSWORD, {
-  host: process.env.HOST,
-  dialect: process.env.DIALECT,
+const connection = new Sequelize(name, user, password, {
+  host: host,
+  dialect: dialect,
   define: {
     timestamps: true,
     underscored: true,
@@ -12,7 +19,7 @@ const connection = new Sequelize(process.env.DATABASE, process.env.DB_USERNAME, 
     useUTC: false,
     typecast: true,
   },
-  timezone: '+02:00',
+  timezone: tz,
 });
 
 connection

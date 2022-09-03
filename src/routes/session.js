@@ -1,6 +1,7 @@
 var checkToken = require('./middleware').checkToken;
 var moment = require('moment');
 var { Op } = require('sequelize');
+const { database: { tz } } = require('config');
 
 module.exports = (path, db, app) => {
     const errHandler = (err, res) => {
@@ -11,7 +12,7 @@ module.exports = (path, db, app) => {
     const getLastHourSessionInfo = (req, res) => {
         console.log(moment());
         const filterOutLastSessions = moment()
-            .tz(process.env.TZ)
+            .tz(tz)
             .subtract(30, 'minutes')
             .toDate();
 

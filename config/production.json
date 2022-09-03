@@ -1,0 +1,10 @@
+{
+  "database": {
+    "name": "service-book",
+    "user": "app",
+    "password": "app",
+    "host": "server-mysql",
+    "dialect": "mysql",
+    "tz": "Europe/Sofia"
+  }
+}

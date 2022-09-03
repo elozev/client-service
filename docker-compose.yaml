@@ -1,8 +1,9 @@
 version: '3.7'
 
 services:
-  server-app:
+  client-service:
     build: .
+    container_name: client-service
     command: npm run dev
     volumes:
       - .:/usr/src/app:z
@@ -10,12 +11,11 @@ services:
       - "9000:9000"
     depends_on:
       - server-mysql
-    # environment: 
-      # DATABASE_URL: mysql://
   server-mysql:
     image: mysql:5.7
+    container_name: mysql
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - "dbdata:/var/lib/mysql:z"
       - "./init:/docker-entrypoint-initdb.d"

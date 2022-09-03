@@ -2,12 +2,14 @@ const createError = require('http-errors')
   , express = require('express')
   , logger = require('morgan')
   , bodyParser = require('body-parser')
-  , dotenv = require('dotenv').config()
   , db = require('./config/db')
   , router = require('./routes/index')
   , app = express()
-  , cors = require('cors')
-  , PORT = process.env.PORT;
+  , cors = require('cors');
+
+const { port } = require('config');
+
+const PORT = port || '9000';
 
 app.use(logger('dev'));
 app.use(express.json());

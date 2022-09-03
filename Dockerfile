@@ -1,7 +1,4 @@
-#Dockerfile
-# PROD CONFIG
-
-FROM node:latest as prod
+FROM node:16-alpine as prod
 
 RUN mkdir -p /usr/src/app
 
@@ -17,5 +14,4 @@ ENV NODE_ENV=production
 
 EXPOSE 9000
 
-#CMD [ "npm", "start"]
-CMD [ "npm", "run" "dev"]
+CMD [ "node", "src/app.js"]
