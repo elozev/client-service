@@ -21,9 +21,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Print SHA
+        run: echo $GITHUB_SHA
+      -
+        name: Print short SHA
+        run: echo ${GITHUB_SHA:0:7}
+      -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: emlozev/client-service:${GITHUB_SHA:0:7}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/client-service:latest,${{ secrets.DOCKERHUB_USERNAME }}/client-service:${GITHUB_SHA:0:7}
